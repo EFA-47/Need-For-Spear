@@ -1,0 +1,26 @@
+Main.stage.getScene().setOnKeyPressed(event -> {
+            KeyCode code = event.getCode();
+            if (code == KeyCode.A | code == KeyCode.LEFT){
+                paddle.setLayoutX(paddle.getLayoutX() - 10);
+                boolean collision = false;
+                for (Rectangle rectangle:borders){
+                    if (paddle.getBoundsInParent().intersects(rectangle.getBoundsInParent())){
+                        collision = true;
+                    }
+                }
+                if (collision) {
+                    paddle.setLayoutX(paddle.getLayoutX() + 10);
+                }
+            }else if (code == KeyCode.D | code == KeyCode.RIGHT){
+                paddle.setLayoutX(paddle.getLayoutX() + 10);
+                boolean collision = false;
+                for (Rectangle rectangle:borders){
+                    if (paddle.getBoundsInParent().intersects(rectangle.getBoundsInParent())){
+                        collision = true;
+                    }
+                }
+                if (collision) {
+                    paddle.setLayoutX(paddle.getLayoutX() - 10);
+                }
+            }
+        });
